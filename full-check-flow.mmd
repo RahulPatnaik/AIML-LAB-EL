@@ -1,0 +1,74 @@
+graph TB
+    Start[User Clicks<br/>FULL CHECK Button]
+    SelectPatient[Selected Patient<br/>1140 EEG Features]
+
+    subgraph Parallel["Parallel Prediction (17 Models)"]
+        M1[Mood Disorder<br/>KNN+RF+ET]
+        M2[Anxiety Disorder<br/>KNN+RF+ET]
+        M3[Depressive Disorder<br/>KNN+RF+ET]
+        M4[Schizophrenia<br/>KNN+RF+ET]
+        M5[Bipolar Disorder<br/>KNN+RF+ET]
+        M6[PTSD<br/>KNN+RF+ET]
+        Dots[...]
+        M17[Adjustment Disorder<br/>KNN+RF+ET]
+    end
+
+    Collect[Collect All Results<br/>17 Predictions]
+    Sort[Sort by Probability<br/>Highest to Lowest]
+
+    subgraph Analysis["Result Analysis"]
+        Top5[Extract Top 5<br/>Most Likely Disorders]
+        AllResults[Complete Table<br/>All 17 Disorders]
+    end
+
+    subgraph AIAnalysis["AI Clinical Analysis"]
+        Context[Build Context:<br/>- Patient metadata<br/>- All probabilities<br/>- Confidence levels<br/>- Present/Absent flags]
+        Prompt[Generate Prompt:<br/>1. Most likely disorders?<br/>2. Comorbidities?<br/>3. Pattern analysis<br/>4. Next steps?]
+        Mistral[Mistral API Call<br/>mistral-large-latest]
+        Response[AI Interpretation<br/>3-4 paragraphs]
+    end
+
+    subgraph Display["Display Results"]
+        PatientInfo[Patient Information Card]
+        Top5Card[🔴 TOP 5 DISORDERS<br/>Red/Green Highlights<br/>Individual model probs]
+        AICard[🤖 AI CLINICAL INTERPRETATION<br/>Comprehensive analysis]
+        FullTable[📋 COMPLETE SCREENING TABLE<br/>All 17 disorders<br/>Sorted by probability]
+    end
+
+    Start --> SelectPatient
+    SelectPatient --> M1 & M2 & M3 & M4 & M5 & M6 & Dots & M17
+
+    M1 --> Collect
+    M2 --> Collect
+    M3 --> Collect
+    M4 --> Collect
+    M5 --> Collect
+    M6 --> Collect
+    Dots --> Collect
+    M17 --> Collect
+
+    Collect --> Sort
+    Sort --> Top5
+    Sort --> AllResults
+
+    Sort --> Context
+    Context --> Prompt
+    Prompt --> Mistral
+    Mistral --> Response
+
+    Top5 --> Top5Card
+    AllResults --> FullTable
+    Response --> AICard
+    SelectPatient --> PatientInfo
+
+    PatientInfo --> Display
+    Top5Card --> Display
+    AICard --> Display
+    FullTable --> Display
+
+    style Start fill:#00ff88,stroke:#00ffff,stroke-width:3px,color:#000
+    style Parallel fill:#1a0a1a,stroke:#ff00ff,stroke-width:2px,color:#fff
+    style Analysis fill:#0a1a0a,stroke:#ffff00,stroke-width:2px,color:#fff
+    style AIAnalysis fill:#1a0a0a,stroke:#ff6600,stroke-width:3px,color:#fff
+    style Display fill:#0a1a1a,stroke:#00ff88,stroke-width:3px,color:#fff
+    style Mistral fill:#ff6600,stroke:#fff,stroke-width:2px,color:#fff

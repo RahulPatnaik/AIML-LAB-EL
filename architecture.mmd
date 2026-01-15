@@ -1,0 +1,145 @@
+graph TB
+    subgraph Frontend["Frontend (React + Plotly.js)"]
+        UI[User Interface]
+        PatientSelect[Patient Selector<br/>9 Patients]
+        DisorderSelect[Disorder Selector<br/>17 Disorders]
+        FullCheckBtn[Full Check Button]
+
+        subgraph Pages["Visualization Pages"]
+            PredictPage[Predict Page]
+            SHAPPage[SHAP Explanation]
+            LIMEPage[LIME Explanation]
+            PCAPage[PCA Feature Space]
+            TSNEPage[t-SNE Projection]
+            UMAPPage[UMAP Projection]
+            DecisionPage[Decision Path]
+            FullCheckPage[Full Check<br/>All 17 Disorders]
+        end
+
+        Charts[Interactive Charts<br/>Plotly.js]
+        AICards[AI Explanation Cards]
+    end
+
+    subgraph Backend["Backend (FastAPI - Python 3.12)"]
+        API[FastAPI Server<br/>Port 8000]
+
+        subgraph Endpoints["API Endpoints"]
+            EP1[/disorders]
+            EP2[/patients]
+            EP3[/predict]
+            EP4[/predict/full_check]
+            EP5[/explain/shap]
+            EP6[/explain/lime]
+            EP7[/visualize/feature_space]
+            EP8[/visualize/tsne]
+            EP9[/visualize/umap]
+            EP10[/visualize/decision_path]
+        end
+
+        subgraph Core["Core Modules"]
+            Explainer[ModelExplainer<br/>explainer.py]
+            AIExplainer[AI Explainer<br/>ai_explainer.py]
+        end
+    end
+
+    subgraph Models["Model Layer"]
+        Cache[Model Cache<br/>In-Memory]
+
+        subgraph ModelTypes["Ensemble Models × 17 Disorders"]
+            KNN[K-Nearest Neighbors]
+            RF[Random Forest]
+            ET[Extra Trees]
+        end
+
+        Scaler[StandardScaler]
+        Ensemble[Weighted Voting<br/>F1-based weights]
+    end
+
+    subgraph Explainability["Explainability Modules"]
+        SHAP[SHAP<br/>TreeExplainer]
+        LIME[LIME<br/>LimeTabularExplainer]
+        PCA[PCA<br/>2D Projection]
+        TSNE[t-SNE<br/>150 samples]
+        UMAP[UMAP<br/>150 samples]
+        DecisionPath[Decision Path<br/>Tree Traversal]
+    end
+
+    subgraph AI["AI Integration"]
+        Mistral[Mistral API<br/>mistral-large-latest]
+        AIFunctions["7 AI Explanation Functions:<br/>- Prediction<br/>- SHAP<br/>- LIME<br/>- PCA<br/>- t-SNE<br/>- UMAP<br/>- Decision Path<br/>- Full Check"]
+    end
+
+    subgraph Data["Data Sources"]
+        EEGData[EEG Dataset<br/>945 samples<br/>1140 features]
+        PatientSamples[Patient Samples<br/>patient_samples.json<br/>9 diverse patients]
+        ModelFiles[Model Files<br/>all_models/<br/>51 .pkl files<br/>34 .json files]
+    end
+
+    %% Frontend to Backend
+    UI --> API
+    PatientSelect --> API
+    DisorderSelect --> API
+    FullCheckBtn --> EP4
+    PredictPage --> EP3
+    SHAPPage --> EP5
+    LIMEPage --> EP6
+    PCAPage --> EP7
+    TSNEPage --> EP8
+    UMAPPage --> EP9
+    DecisionPage --> EP10
+    FullCheckPage --> EP4
+
+    %% API to Modules
+    API --> Explainer
+    API --> AIExplainer
+    EP3 --> Explainer
+    EP4 --> Explainer
+    EP5 --> Explainer
+    EP6 --> Explainer
+    EP7 --> Explainer
+    EP8 --> Explainer
+    EP9 --> Explainer
+    EP10 --> Explainer
+
+    %% Explainer to Models
+    Explainer --> Cache
+    Cache --> KNN
+    Cache --> RF
+    Cache --> ET
+    KNN --> Ensemble
+    RF --> Ensemble
+    ET --> Ensemble
+    Explainer --> Scaler
+
+    %% Explainability
+    Explainer --> SHAP
+    Explainer --> LIME
+    Explainer --> PCA
+    Explainer --> TSNE
+    Explainer --> UMAP
+    Explainer --> DecisionPath
+
+    %% AI Integration
+    AIExplainer --> Mistral
+    AIExplainer --> AIFunctions
+    Explainer --> AIExplainer
+
+    %% Data Flow
+    ModelFiles --> Cache
+    PatientSamples --> API
+    EEGData --> TSNE
+    EEGData --> UMAP
+
+    %% Backend to Frontend
+    API --> Charts
+    AIExplainer --> AICards
+
+    style Frontend fill:#0a1a1a,stroke:#00ff88,stroke-width:3px,color:#fff
+    style Backend fill:#1a0a1a,stroke:#00ffff,stroke-width:3px,color:#fff
+    style Models fill:#0a0a1a,stroke:#ff00ff,stroke-width:3px,color:#fff
+    style Explainability fill:#1a1a0a,stroke:#ffff00,stroke-width:3px,color:#fff
+    style AI fill:#1a0a0a,stroke:#ff6600,stroke-width:3px,color:#fff
+    style Data fill:#0a1a0a,stroke:#00ff00,stroke-width:3px,color:#fff
+
+    style FullCheckBtn fill:#00ff88,stroke:#00ffff,stroke-width:2px,color:#000
+    style Mistral fill:#ff6600,stroke:#fff,stroke-width:2px,color:#fff

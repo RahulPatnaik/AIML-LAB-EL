@@ -1,0 +1,75 @@
+graph TB
+    Input[EEG Features<br/>1140 dimensions<br/>6 frequency bands]
+
+    subgraph Preprocessing["Feature Preprocessing"]
+        Scale[StandardScaler<br/>Z-score normalization]
+    end
+
+    subgraph Disorders["17 Disorder Classifiers"]
+        D1[Mood Disorder]
+        D2[Addictive Disorder]
+        D3[Trauma & Stress]
+        D4[Schizophrenia]
+        D5[Anxiety Disorder]
+        D6[OCD]
+        D7[Depressive Disorder]
+        D8[Alcohol Use]
+        D9[Behavioral Addiction]
+        D10[Bipolar Disorder]
+        D11[Panic Disorder]
+        D12[PTSD]
+        D13[Social Anxiety]
+        D14[Acute Stress]
+        D15[Adjustment Disorder]
+        D16[OCD Variant]
+        D17[Schizophrenia Variant]
+    end
+
+    subgraph EnsemblePerDisorder["Ensemble Per Disorder"]
+        direction TB
+        M1[KNN<br/>k=9-15<br/>manhattan/euclidean]
+        M2[Random Forest<br/>n=100-500<br/>max_depth=10-20]
+        M3[Extra Trees<br/>n=100-500<br/>max_depth=10-20]
+        Vote[Weighted Voting<br/>F1-based weights]
+        Threshold[Optimal Threshold<br/>Precision-Recall Curve]
+    end
+
+    subgraph Output["Model Output"]
+        Pred[Binary Prediction<br/>0=Absent / 1=Present]
+        Prob[Probability Score<br/>0.0 to 1.0]
+        Conf[Confidence Level<br/>Low/Medium/High]
+        IndProb[Individual Probabilities<br/>KNN / RF / ET]
+    end
+
+    subgraph Explainability["Model Explainability"]
+        FeatImp[Feature Importance<br/>Top 20 features]
+        SHAP[SHAP Values<br/>TreeExplainer]
+        LIME[LIME<br/>Local explanations]
+        DTree[Decision Path<br/>Tree traversal]
+    end
+
+    Input --> Scale
+    Scale --> D1 & D2 & D3 & D4 & D5 & D6 & D7 & D8 & D9 & D10 & D11 & D12 & D13 & D14 & D15 & D16 & D17
+
+    D1 --> M1 & M2 & M3
+    M1 --> Vote
+    M2 --> Vote
+    M3 --> Vote
+    Vote --> Threshold
+
+    Threshold --> Pred
+    Threshold --> Prob
+    Threshold --> Conf
+    M1 & M2 & M3 --> IndProb
+
+    M2 --> FeatImp
+    M2 --> SHAP
+    M1 & M2 & M3 --> LIME
+    M2 --> DTree
+
+    style Input fill:#0a1a0a,stroke:#00ff00,stroke-width:3px,color:#fff
+    style Preprocessing fill:#1a0a1a,stroke:#00ffff,stroke-width:2px,color:#fff
+    style Disorders fill:#0a0a1a,stroke:#ff00ff,stroke-width:2px,color:#fff
+    style EnsemblePerDisorder fill:#1a1a0a,stroke:#ffff00,stroke-width:3px,color:#fff
+    style Output fill:#1a0a0a,stroke:#ff6600,stroke-width:3px,color:#fff
+    style Explainability fill:#0a1a1a,stroke:#00ff88,stroke-width:2px,color:#fff
