@@ -1,29 +1,28 @@
-graph TB
-    Input["EEG Features<br/>1140 dimensions<br/>6 frequency bands"]
+flowchart LR
+    A["EEG Features<br/>(1140 dimensions,<br/>6 frequency bands)"]
+    B["Feature Scaling"]
+    C["KNN"]
+    D["Random Forest"]
+    E["Extra Trees"]
+    F["Weighted Voting<br/>(F1-based)"]
+    G["Optimal Threshold"]
+    H["Prediction<br/>(Binary + Probability<br/>+ Confidence)"]
 
-    Preprocess["Feature Scaling<br/>(Z-score normalization)"]
+    A --> B
+    B --> C
+    B --> D
+    B --> E
+    C --> F
+    D --> F
+    E --> F
+    F --> G
+    G --> H
 
-    subgraph Ensemble["Ensemble Classifier"]
-        KNN["K-Nearest Neighbors<br/>(k=9-15, manhattan)"]
-        RF["Random Forest<br/>(100-500 trees)"]
-        ET["Extra Trees<br/>(100-500 trees)"]
-    end
-
-    Vote["Weighted Voting<br/>(F1-based weights)"]
-    Threshold["Optimal Threshold<br/>(from precision-recall curve)"]
-
-    Output["Binary Prediction<br/>+ Probability<br/>+ Confidence Level"]
-
-    Input --> Preprocess
-    Preprocess --> KNN
-    Preprocess --> RF
-    Preprocess --> ET
-    KNN --> Vote
-    RF --> Vote
-    ET --> Vote
-    Vote --> Threshold
-    Threshold --> Output
-
-    style Input fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style Ensemble fill:#e8f4f8,stroke:#333,stroke-width:2px
-    style Output fill:#fff4e8,stroke:#333,stroke-width:2px
+    style A fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style B fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style C fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style D fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style E fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style F fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style G fill:#fff4e8,stroke:#333,stroke-width:2px
+    style H fill:#fff4e8,stroke:#333,stroke-width:2px

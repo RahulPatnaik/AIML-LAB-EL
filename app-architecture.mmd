@@ -1,28 +1,18 @@
-graph LR
-    subgraph Frontend["Frontend (React)"]
-        UI["User Interface<br/>Patient/Disorder Selection"]
-        Viz["Visualization Layer<br/>(Plotly.js)"]
-    end
+flowchart TB
+    A["User Interface<br/>(React)"]
+    B["REST API<br/>(FastAPI)"]
+    C["Model Layer<br/>(17 disorders × 3 models)"]
+    D["Visualizations<br/>(Plotly.js)"]
+    E["AI Module<br/>(Mistral API)"]
 
-    subgraph Backend["Backend (FastAPI)"]
-        API["REST API<br/>(10 endpoints)"]
-        Models["Model Layer<br/>(17 disorders × 3 models)"]
-        AI["AI Module<br/>(Mistral API)"]
-    end
+    A --> B
+    B --> C
+    B --> E
+    C --> D
+    E --> D
 
-    subgraph Data["Data"]
-        EEG["EEG Dataset<br/>(945 samples)"]
-        Patients["Patient Samples<br/>(9 patients)"]
-    end
-
-    UI --> API
-    API --> Models
-    API --> AI
-    Models --> Viz
-    AI --> Viz
-    EEG --> Models
-    Patients --> API
-
-    style Frontend fill:#e8f4f8,stroke:#333,stroke-width:2px
-    style Backend fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style Data fill:#fff4e8,stroke:#333,stroke-width:2px
+    style A fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style B fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style C fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style D fill:#fff4e8,stroke:#333,stroke-width:2px
+    style E fill:#f9f9f9,stroke:#333,stroke-width:2px

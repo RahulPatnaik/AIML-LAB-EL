@@ -1,27 +1,23 @@
-graph TB
-    subgraph Input["Input Layer"]
-        Patient["Patient EEG Data<br/>(1140 features)"]
-    end
+flowchart LR
+    A["Patient EEG Data<br/>(1140 features)"]
+    B["Feature Scaling"]
+    C["17 Disorder Classifiers<br/>(KNN + RF + ET)"]
+    D["Explainability<br/>(SHAP, LIME, PCA,<br/>t-SNE, UMAP)"]
+    E["Prediction Results"]
+    F["Visualizations"]
+    G["AI Interpretation"]
 
-    subgraph Processing["Processing Layer"]
-        Scale["Feature Scaling<br/>(StandardScaler)"]
-        Models["17 Disorder Classifiers<br/>(Ensemble: KNN + RF + ET)"]
-        Explain["Explainability<br/>(SHAP, LIME, PCA, t-SNE, UMAP)"]
-    end
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    E --> G
 
-    subgraph Output["Output Layer"]
-        Results["Prediction Results<br/>(Probability + Confidence)"]
-        Viz["Interactive Visualizations"]
-        AI["AI Clinical Interpretation<br/>(Mistral API)"]
-    end
-
-    Patient --> Scale
-    Scale --> Models
-    Models --> Explain
-    Explain --> Results
-    Results --> Viz
-    Results --> AI
-
-    style Input fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style Processing fill:#e8f4f8,stroke:#333,stroke-width:2px
-    style Output fill:#fff4e8,stroke:#333,stroke-width:2px
+    style A fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style B fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style C fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style D fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style E fill:#fff4e8,stroke:#333,stroke-width:2px
+    style F fill:#fff4e8,stroke:#333,stroke-width:2px
+    style G fill:#fff4e8,stroke:#333,stroke-width:2px
