@@ -1,0 +1,48 @@
+{
+  "disorder": "Addictive disorder",
+  "created_date": "2026-01-10T14:04:59.627723",
+  "dataset_info": {
+    "positive_samples": 186,
+    "negative_samples": 759,
+    "imbalance_ratio": 4.080645161290323,
+    "total_features": 1140
+  },
+  "model_config": {
+    "knn_metric": "manhattan",
+    "knn_n_neighbors": 7,
+    "rf_n_estimators": 300,
+    "rf_max_depth": 12,
+    "ensemble_strategy": "F1-Weighted",
+    "ensemble_weights": {
+      "knn": 0.4777239948631829,
+      "rf": 0.2619776746023906,
+      "et": 0.2602983305344266
+    },
+    "optimal_threshold": 0.5700000000000001
+  },
+  "performance_metrics": {
+    "f1_score": 0.4074074074074074,
+    "recall": 0.5945945945945946,
+    "precision": 0.30985915492957744,
+    "accuracy": 0.6613756613756614,
+    "balanced_accuracy": 0.6361130867709816,
+    "auc_roc": 0.6223328591749644
+  },
+  "confusion_matrix": {
+    "true_negative": 103,
+    "false_positive": 49,
+    "false_negative": 15,
+    "true_positive": 22
+  },
+  "individual_model_f1": {
+    "knn": 0.35294117647058826,
+    "random_forest": 0.1935483870967742,
+    "extra_trees": 0.19230769230769232
+  },
+  "clinical_metrics": {
+    "sensitivity": 0.5945945945945946,
+    "specificity": 0.6776315789473685,
+    "ppv": 0.30985915492957744,
+    "npv": 0.8728813559322034
+  }
+}

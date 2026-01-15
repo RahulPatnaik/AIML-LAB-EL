@@ -1,0 +1,48 @@
+{
+  "disorder": "Depressive disorder",
+  "created_date": "2026-01-10T14:05:54.637315",
+  "dataset_info": {
+    "positive_samples": 199,
+    "negative_samples": 746,
+    "imbalance_ratio": 3.748743718592965,
+    "total_features": 1140
+  },
+  "model_config": {
+    "knn_metric": "manhattan",
+    "knn_n_neighbors": 13,
+    "rf_n_estimators": 300,
+    "rf_max_depth": 12,
+    "ensemble_strategy": "F1-Weighted",
+    "ensemble_weights": {
+      "knn": 0.5071428571428572,
+      "rf": 0.23928571428571432,
+      "et": 0.2535714285714286
+    },
+    "optimal_threshold": 0.33999999999999997
+  },
+  "performance_metrics": {
+    "f1_score": 0.36538461538461536,
+    "recall": 0.95,
+    "precision": 0.2261904761904762,
+    "accuracy": 0.30158730158730157,
+    "balanced_accuracy": 0.5387583892617449,
+    "auc_roc": 0.5317114093959732
+  },
+  "confusion_matrix": {
+    "true_negative": 19,
+    "false_positive": 130,
+    "false_negative": 2,
+    "true_positive": 38
+  },
+  "individual_model_f1": {
+    "knn": 0.3582089552238806,
+    "random_forest": 0.16901408450704225,
+    "extra_trees": 0.1791044776119403
+  },
+  "clinical_metrics": {
+    "sensitivity": 0.95,
+    "specificity": 0.12751677852348994,
+    "ppv": 0.2261904761904762,
+    "npv": 0.9047619047619048
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "disorder": "Behavioral addiction disorder",
+  "created_date": "2026-01-10T14:06:27.897284",
+  "dataset_info": {
+    "positive_samples": 93,
+    "negative_samples": 852,
+    "imbalance_ratio": 9.161290322580646,
+    "total_features": 1140
+  },
+  "model_config": {
+    "knn_metric": "manhattan",
+    "knn_n_neighbors": 9,
+    "rf_n_estimators": 300,
+    "rf_max_depth": 12,
+    "ensemble_strategy": "F1-Weighted",
+    "ensemble_weights": {
+      "knn": 0.3487007544006706,
+      "rf": 0.24811399832355407,
+      "et": 0.4031852472757753
+    },
+    "optimal_threshold": 0.59
+  },
+  "performance_metrics": {
+    "f1_score": 0.4,
+    "recall": 0.3684210526315789,
+    "precision": 0.4375,
+    "accuracy": 0.8888888888888888,
+    "balanced_accuracy": 0.6577399380804954,
+    "auc_roc": 0.6931888544891641
+  },
+  "confusion_matrix": {
+    "true_negative": 161,
+    "false_positive": 9,
+    "false_negative": 12,
+    "true_positive": 7
+  },
+  "individual_model_f1": {
+    "knn": 0.21621621621621623,
+    "random_forest": 0.15384615384615385,
+    "extra_trees": 0.25
+  },
+  "clinical_metrics": {
+    "sensitivity": 0.3684210526315789,
+    "specificity": 0.9470588235294117,
+    "ppv": 0.4375,
+    "npv": 0.930635838150289
+  }
+}

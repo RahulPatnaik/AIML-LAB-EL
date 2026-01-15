@@ -1,0 +1,48 @@
+{
+  "disorder": "Adjustment disorder",
+  "created_date": "2026-01-10T14:07:49.027332",
+  "dataset_info": {
+    "positive_samples": 38,
+    "negative_samples": 907,
+    "imbalance_ratio": 23.86842105263158,
+    "total_features": 1140
+  },
+  "model_config": {
+    "knn_metric": "manhattan",
+    "knn_n_neighbors": 5,
+    "rf_n_estimators": 300,
+    "rf_max_depth": 12,
+    "ensemble_strategy": "F1-Weighted",
+    "ensemble_weights": {
+      "knn": 1.0,
+      "rf": 0.0,
+      "et": 0.0
+    },
+    "optimal_threshold": 0.1
+  },
+  "performance_metrics": {
+    "f1_score": 0.09210526315789473,
+    "recall": 0.875,
+    "precision": 0.04861111111111111,
+    "accuracy": 0.2698412698412698,
+    "balanced_accuracy": 0.5590469613259669,
+    "auc_roc": 0.5138121546961326
+  },
+  "confusion_matrix": {
+    "true_negative": 44,
+    "false_positive": 137,
+    "false_negative": 1,
+    "true_positive": 7
+  },
+  "individual_model_f1": {
+    "knn": 0.07476635514018691,
+    "random_forest": 0.0,
+    "extra_trees": 0.0
+  },
+  "clinical_metrics": {
+    "sensitivity": 0.875,
+    "specificity": 0.2430939226519337,
+    "ppv": 0.04861111111111111,
+    "npv": 0.9777777777777777
+  }
+}

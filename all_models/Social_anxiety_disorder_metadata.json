@@ -1,0 +1,48 @@
+{
+  "disorder": "Social anxiety disorder",
+  "created_date": "2026-01-10T14:07:14.282099",
+  "dataset_info": {
+    "positive_samples": 48,
+    "negative_samples": 897,
+    "imbalance_ratio": 18.6875,
+    "total_features": 1140
+  },
+  "model_config": {
+    "knn_metric": "manhattan",
+    "knn_n_neighbors": 9,
+    "rf_n_estimators": 300,
+    "rf_max_depth": 12,
+    "ensemble_strategy": "F1-Weighted",
+    "ensemble_weights": {
+      "knn": 1.0,
+      "rf": 0.0,
+      "et": 0.0
+    },
+    "optimal_threshold": 0.56
+  },
+  "performance_metrics": {
+    "f1_score": 0.11320754716981132,
+    "recall": 0.6,
+    "precision": 0.0625,
+    "accuracy": 0.5026455026455027,
+    "balanced_accuracy": 0.5486033519553073,
+    "auc_roc": 0.4879888268156425
+  },
+  "confusion_matrix": {
+    "true_negative": 89,
+    "false_positive": 90,
+    "false_negative": 4,
+    "true_positive": 6
+  },
+  "individual_model_f1": {
+    "knn": 0.10687022900763359,
+    "random_forest": 0.0,
+    "extra_trees": 0.0
+  },
+  "clinical_metrics": {
+    "sensitivity": 0.6,
+    "specificity": 0.4972067039106145,
+    "ppv": 0.0625,
+    "npv": 0.956989247311828
+  }
+}

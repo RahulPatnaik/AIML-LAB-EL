@@ -1,0 +1,48 @@
+{
+  "disorder": "Panic disorder",
+  "created_date": "2026-01-10T14:06:51.075375",
+  "dataset_info": {
+    "positive_samples": 59,
+    "negative_samples": 886,
+    "imbalance_ratio": 15.016949152542374,
+    "total_features": 1140
+  },
+  "model_config": {
+    "knn_metric": "manhattan",
+    "knn_n_neighbors": 11,
+    "rf_n_estimators": 300,
+    "rf_max_depth": 12,
+    "ensemble_strategy": "F1-Weighted",
+    "ensemble_weights": {
+      "knn": 0.49342105263157887,
+      "rf": 0.0,
+      "et": 0.506578947368421
+    },
+    "optimal_threshold": 0.6799999999999999
+  },
+  "performance_metrics": {
+    "f1_score": 0.19047619047619047,
+    "recall": 0.16666666666666666,
+    "precision": 0.2222222222222222,
+    "accuracy": 0.91005291005291,
+    "balanced_accuracy": 0.5635593220338984,
+    "auc_roc": 0.57909604519774
+  },
+  "confusion_matrix": {
+    "true_negative": 170,
+    "false_positive": 7,
+    "false_negative": 10,
+    "true_positive": 2
+  },
+  "individual_model_f1": {
+    "knn": 0.12987012987012986,
+    "random_forest": 0.0,
+    "extra_trees": 0.13333333333333333
+  },
+  "clinical_metrics": {
+    "sensitivity": 0.16666666666666666,
+    "specificity": 0.96045197740113,
+    "ppv": 0.2222222222222222,
+    "npv": 0.9444444444444444
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "disorder": "Posttraumatic stress disorder",
+  "created_date": "2026-01-10T14:07:02.673567",
+  "dataset_info": {
+    "positive_samples": 52,
+    "negative_samples": 893,
+    "imbalance_ratio": 17.173076923076923,
+    "total_features": 1140
+  },
+  "model_config": {
+    "knn_metric": "manhattan",
+    "knn_n_neighbors": 5,
+    "rf_n_estimators": 300,
+    "rf_max_depth": 12,
+    "ensemble_strategy": "F1-Weighted",
+    "ensemble_weights": {
+      "knn": 1.0,
+      "rf": 0.0,
+      "et": 0.0
+    },
+    "optimal_threshold": 0.41000000000000003
+  },
+  "performance_metrics": {
+    "f1_score": 0.10344827586206896,
+    "recall": 0.6,
+    "precision": 0.05660377358490566,
+    "accuracy": 0.4497354497354497,
+    "balanced_accuracy": 0.5206703910614525,
+    "auc_roc": 0.4659217877094972
+  },
+  "confusion_matrix": {
+    "true_negative": 79,
+    "false_positive": 100,
+    "false_negative": 4,
+    "true_positive": 6
+  },
+  "individual_model_f1": {
+    "knn": 0.10344827586206896,
+    "random_forest": 0.0,
+    "extra_trees": 0.0
+  },
+  "clinical_metrics": {
+    "sensitivity": 0.6,
+    "specificity": 0.441340782122905,
+    "ppv": 0.05660377358490566,
+    "npv": 0.9518072289156626
+  }
+}

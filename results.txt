@@ -1,0 +1,614 @@
+====================================================================================================
+🎯 OPTIMIZED KNN + RF ENSEMBLE
+====================================================================================================
+
+💡 Strategy:
+   1. KNN with 5 distance metrics: Euclidean, Manhattan, Chebyshev, Minkowski, Cosine
+   2. Random Forest with optimized hyperparameters
+   3. Extra Trees (more randomized RF variant)
+   4. Intelligent ensemble weighting per disorder
+   5. Focus on HIGH RECALL for medical screening
+
+🎯 Target: 50-65% F1, 90-95% Recall
+
+✓ Loaded: 945 samples × 1140 features
+
+====================================================================================================
+🚀 TRAINING ALL MAIN DISORDERS
+====================================================================================================
+
+[1/6] 
+====================================================================================================
+🎯 Mood disorder
+====================================================================================================
+📊 266 positive, 679 negative (ratio 1:2.6)
+🔄 Applying SMOTE... ✓ 543 positive, 543 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✓ k= 5 | F1= 43.5% | Recall= 98.1%
+   Testing manhattan      ... ✓ k= 5 | F1= 43.8% | Recall=100.0%
+   Testing chebyshev      ... ✓ k=11 | F1= 33.0% | Recall= 32.1%
+   Testing minkowski_p3   ... ✓ k= 5 | F1= 43.5% | Recall= 98.1%
+   Testing cosine         ... ✓ k= 5 | F1= 40.7% | Recall= 45.3%
+
+   🏆 Best KNN metric: manhattan (F1=43.8%)
+
+🌲 Training Random Forest... ✓ F1= 26.1% | Recall= 22.6%
+🌳 Training Extra Trees... ✓ F1= 31.8% | Recall= 26.4%
+
+🔗 Creating intelligent ensemble... ✓ Best: F1-Weighted @ threshold=0.42
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  45.6% | Recall:  98.1% | Precision:  29.7% | Bal_Acc:  53.8%
+   🎯 Best KNN    → F1:  43.8% (manhattan)
+   🌲 Best Tree   → F1:  31.8% (ET)
+   ✅ Ensemble improvement: +1.8%
+
+📋 Confusion Matrix:
+   [[TN= 13, FP=123]
+    [FN=  1, TP= 52]]
+   ✅ HIGH RECALL! Catching 98% of patients!
+
+[2/6] 
+====================================================================================================
+🎯 Addictive disorder
+====================================================================================================
+📊 186 positive, 759 negative (ratio 1:4.1)
+🔄 Applying SMOTE... ✓ 607 positive, 607 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✓ k=15 | F1=  8.9% | Recall=  5.4%
+   Testing manhattan      ... ✓ k=13 | F1= 14.3% | Recall=  8.1%
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✓ k=13 | F1= 23.7% | Recall= 18.9%
+
+   🏆 Best KNN metric: cosine (F1=23.7%)
+
+🌲 Training Random Forest... ✓ F1= 19.4% | Recall= 16.2%
+🌳 Training Extra Trees... ✓ F1= 19.2% | Recall= 13.5%
+
+🔗 Creating intelligent ensemble... ✓ Best: Average @ threshold=0.30
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  39.2% | Recall:  83.8% | Precision:  25.6% | Bal_Acc:  62.3%
+   🎯 Best KNN    → F1:  23.7% (cosine)
+   🌲 Best Tree   → F1:  19.4% (RF)
+   ✅ Ensemble improvement: +15.5%
+
+📋 Confusion Matrix:
+   [[TN= 62, FP= 90]
+    [FN=  6, TP= 31]]
+
+[3/6] 
+====================================================================================================
+🎯 Trauma and stress related disorder
+====================================================================================================
+📊 128 positive, 817 negative (ratio 1:6.4)
+🔄 Applying SMOTE... ✓ 654 positive, 654 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✓ k=11 | F1= 30.2% | Recall= 50.0%
+   Testing manhattan      ... ✓ k= 5 | F1= 25.6% | Recall= 80.8%
+   Testing chebyshev      ... ✓ k= 5 | F1= 12.3% | Recall= 15.4%
+   Testing minkowski_p3   ... ✓ k= 5 | F1= 26.3% | Recall= 19.2%
+   Testing cosine         ... ✓ k= 5 | F1= 15.9% | Recall= 19.2%
+
+   🏆 Best KNN metric: euclidean (F1=30.2%)
+
+🌲 Training Random Forest... ✓ F1= 17.1% | Recall= 11.5%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: Top3 @ threshold=0.55
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  36.4% | Recall:  30.8% | Precision:  44.4% | Bal_Acc:  62.3%
+   🎯 Best KNN    → F1:  30.2% (euclidean)
+   🌲 Best Tree   → F1:  17.1% (RF)
+   ✅ Ensemble improvement: +6.1%
+
+📋 Confusion Matrix:
+   [[TN=153, FP= 10]
+    [FN= 18, TP=  8]]
+
+[4/6] 
+====================================================================================================
+🎯 Schizophrenia
+====================================================================================================
+📊 117 positive, 828 negative (ratio 1:7.1)
+🔄 Applying SMOTE... ✓ 662 positive, 662 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✓ k=11 | F1= 18.2% | Recall= 26.1%
+
+   🏆 Best KNN metric: cosine (F1=18.2%)
+
+🌲 Training Random Forest... ✓ F1=  0.0% | Recall=  0.0%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: F1-Weighted @ threshold=0.19
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  24.0% | Recall:  65.2% | Precision:  14.7% | Bal_Acc:  56.4%
+   🎯 Best KNN    → F1:  18.2% (cosine)
+   🌲 Best Tree   → F1:   0.0% (ET)
+   ✅ Ensemble improvement: +5.8%
+
+📋 Confusion Matrix:
+   [[TN= 79, FP= 87]
+    [FN=  8, TP= 15]]
+
+[5/6] 
+====================================================================================================
+🎯 Anxiety disorder
+====================================================================================================
+📊 107 positive, 838 negative (ratio 1:7.8)
+🔄 Applying SMOTE... ✓ 670 positive, 670 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✗ Failed
+⚠️  All KNN metrics failed
+
+[6/6] 
+====================================================================================================
+🎯 Obsessive compulsive disorder
+====================================================================================================
+📊 46 positive, 899 negative (ratio 1:19.5)
+🔄 Applying SMOTE... ✓ 719 positive, 719 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✓ k= 7 | F1= 13.5% | Recall=100.0%
+   Testing manhattan      ... ✓ k= 5 | F1= 20.0% | Recall= 33.3%
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✓ k= 7 | F1= 14.5% | Recall= 88.9%
+   Testing cosine         ... ✓ k= 5 | F1= 11.1% | Recall= 22.2%
+
+   🏆 Best KNN metric: manhattan (F1=20.0%)
+
+🌲 Training Random Forest... ✓ F1=  0.0% | Recall=  0.0%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: BestKNN+BestTree @ threshold=0.42
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  28.6% | Recall:  33.3% | Precision:  25.0% | Bal_Acc:  64.2%
+   🎯 Best KNN    → F1:  20.0% (manhattan)
+   🌲 Best Tree   → F1:   0.0% (ET)
+   ✅ Ensemble improvement: +8.6%
+
+📋 Confusion Matrix:
+   [[TN=171, FP=  9]
+    [FN=  6, TP=  3]]
+
+====================================================================================================
+🚀 TRAINING SPECIFIC DISORDERS
+====================================================================================================
+
+[1/11] 
+====================================================================================================
+🎯 Depressive disorder
+====================================================================================================
+📊 199 positive, 746 negative (ratio 1:3.7)
+🔄 Applying SMOTE... ✓ 597 positive, 597 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✓ k=15 | F1= 32.4% | Recall= 42.5%
+
+   🏆 Best KNN metric: cosine (F1=32.4%)
+
+🌲 Training Random Forest... ✓ F1= 16.9% | Recall= 15.0%
+🌳 Training Extra Trees... ✓ F1= 17.9% | Recall= 15.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: Average @ threshold=0.34
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  41.0% | Recall:  80.0% | Precision:  27.6% | Bal_Acc:  61.8%
+   🎯 Best KNN    → F1:  32.4% (cosine)
+   🌲 Best Tree   → F1:  17.9% (ET)
+   ✅ Ensemble improvement: +8.6%
+
+📋 Confusion Matrix:
+   [[TN= 65, FP= 84]
+    [FN=  8, TP= 32]]
+
+[2/11] 
+====================================================================================================
+🎯 Schizophrenia
+====================================================================================================
+📊 117 positive, 828 negative (ratio 1:7.1)
+🔄 Applying SMOTE... ✓ 662 positive, 662 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✓ k=11 | F1= 18.2% | Recall= 26.1%
+
+   🏆 Best KNN metric: cosine (F1=18.2%)
+
+🌲 Training Random Forest... ✓ F1=  0.0% | Recall=  0.0%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: F1-Weighted @ threshold=0.19
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  24.0% | Recall:  65.2% | Precision:  14.7% | Bal_Acc:  56.4%
+   🎯 Best KNN    → F1:  18.2% (cosine)
+   🌲 Best Tree   → F1:   0.0% (ET)
+   ✅ Ensemble improvement: +5.8%
+
+📋 Confusion Matrix:
+   [[TN= 79, FP= 87]
+    [FN=  8, TP= 15]]
+
+[3/11] 
+====================================================================================================
+🎯 Alcohol use disorder
+====================================================================================================
+📊 93 positive, 852 negative (ratio 1:9.2)
+🔄 Applying SMOTE... ✓ 682 positive, 682 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✓ k= 9 | F1= 20.9% | Recall=100.0%
+   Testing manhattan      ... ✓ k= 5 | F1= 19.7% | Recall= 78.9%
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✓ k= 5 | F1= 22.0% | Recall= 68.4%
+   Testing cosine         ... ✓ k=11 | F1= 20.4% | Recall= 26.3%
+
+   🏆 Best KNN metric: minkowski_p3 (F1=22.0%)
+
+🌲 Training Random Forest... ✓ F1=  7.7% | Recall=  5.3%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: BestKNN+BestTree @ threshold=0.53
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  28.6% | Recall:  31.6% | Precision:  26.1% | Bal_Acc:  60.8%
+   🎯 Best KNN    → F1:  22.0% (minkowski_p3)
+   🌲 Best Tree   → F1:   7.7% (RF)
+   ✅ Ensemble improvement: +6.5%
+
+📋 Confusion Matrix:
+   [[TN=153, FP= 17]
+    [FN= 13, TP=  6]]
+
+[4/11] 
+====================================================================================================
+🎯 Behavioral addiction disorder
+====================================================================================================
+📊 93 positive, 852 negative (ratio 1:9.2)
+🔄 Applying SMOTE... ✓ 682 positive, 682 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✓ k=15 | F1= 13.0% | Recall= 15.8%
+
+   🏆 Best KNN metric: cosine (F1=13.0%)
+
+🌲 Training Random Forest... ✓ F1= 15.4% | Recall= 10.5%
+🌳 Training Extra Trees... ✓ F1= 25.0% | Recall= 15.8%
+
+🔗 Creating intelligent ensemble... ✓ Best: F1-Weighted @ threshold=0.38
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  30.8% | Recall:  42.1% | Precision:  24.2% | Bal_Acc:  63.7%
+   🎯 Best KNN    → F1:  13.0% (cosine)
+   🌲 Best Tree   → F1:  25.0% (ET)
+   ✅ Ensemble improvement: +5.8%
+
+📋 Confusion Matrix:
+   [[TN=145, FP= 25]
+    [FN= 11, TP=  8]]
+
+[5/11] 
+====================================================================================================
+🎯 Bipolar disorder
+====================================================================================================
+📊 67 positive, 878 negative (ratio 1:13.1)
+🔄 Applying SMOTE... ✓ 702 positive, 702 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✓ k= 5 | F1= 13.0% | Recall=100.0%
+   Testing manhattan      ... ✓ k= 5 | F1= 12.9% | Recall=100.0%
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✓ k= 5 | F1= 13.1% | Recall=100.0%
+   Testing cosine         ... ✓ k= 5 | F1= 14.5% | Recall= 30.8%
+
+   🏆 Best KNN metric: cosine (F1=14.5%)
+
+🌲 Training Random Forest... ✓ F1=  8.7% | Recall=  7.7%
+🌳 Training Extra Trees... ✓ F1=  8.7% | Recall=  7.7%
+
+🔗 Creating intelligent ensemble... ✓ Best: BestKNN+BestTree @ threshold=0.61
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  21.6% | Recall:  30.8% | Precision:  16.7% | Bal_Acc:  59.7%
+   🎯 Best KNN    → F1:  14.5% (cosine)
+   🌲 Best Tree   → F1:   8.7% (ET)
+   ✅ Ensemble improvement: +7.1%
+
+📋 Confusion Matrix:
+   [[TN=156, FP= 20]
+    [FN=  9, TP=  4]]
+
+[6/11] 
+====================================================================================================
+🎯 Panic disorder
+====================================================================================================
+📊 59 positive, 886 negative (ratio 1:15.0)
+🔄 Applying SMOTE... ✓ 709 positive, 709 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✗ Failed
+⚠️  All KNN metrics failed
+
+[7/11] 
+====================================================================================================
+🎯 Posttraumatic stress disorder
+====================================================================================================
+📊 52 positive, 893 negative (ratio 1:17.2)
+🔄 Applying SMOTE... ✓ 714 positive, 714 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✓ k= 5 | F1= 10.8% | Recall= 20.0%
+
+   🏆 Best KNN metric: cosine (F1=10.8%)
+
+🌲 Training Random Forest... ✓ F1=  0.0% | Recall=  0.0%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: F1-Weighted @ threshold=0.41
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  10.8% | Recall:  20.0% | Precision:   7.4% | Bal_Acc:  53.0%
+   🎯 Best KNN    → F1:  10.8% (cosine)
+   🌲 Best Tree   → F1:   0.0% (ET)
+
+📋 Confusion Matrix:
+   [[TN=154, FP= 25]
+    [FN=  8, TP=  2]]
+
+[8/11] 
+====================================================================================================
+🎯 Social anxiety disorder
+====================================================================================================
+📊 48 positive, 897 negative (ratio 1:18.7)
+🔄 Applying SMOTE... ✓ 718 positive, 718 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✓ k=15 | F1=  6.2% | Recall= 10.0%
+
+   🏆 Best KNN metric: cosine (F1=6.2%)
+
+🌲 Training Random Forest... ✓ F1=  0.0% | Recall=  0.0%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: Average @ threshold=0.30
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:   9.5% | Recall:  20.0% | Precision:   6.2% | Bal_Acc:  51.6%
+   🎯 Best KNN    → F1:   6.2% (cosine)
+   🌲 Best Tree   → F1:   0.0% (ET)
+   ✅ Ensemble improvement: +3.3%
+
+📋 Confusion Matrix:
+   [[TN=149, FP= 30]
+    [FN=  8, TP=  2]]
+
+[9/11] 
+====================================================================================================
+🎯 Obsessive compulsitve disorder
+====================================================================================================
+📊 46 positive, 899 negative (ratio 1:19.5)
+🔄 Applying SMOTE... ✓ 719 positive, 719 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✓ k= 7 | F1= 13.5% | Recall=100.0%
+   Testing manhattan      ... ✓ k= 5 | F1= 20.0% | Recall= 33.3%
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✓ k= 7 | F1= 14.5% | Recall= 88.9%
+   Testing cosine         ... ✓ k= 5 | F1= 11.1% | Recall= 22.2%
+
+   🏆 Best KNN metric: manhattan (F1=20.0%)
+
+🌲 Training Random Forest... ✓ F1=  0.0% | Recall=  0.0%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: BestKNN+BestTree @ threshold=0.42
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  28.6% | Recall:  33.3% | Precision:  25.0% | Bal_Acc:  64.2%
+   🎯 Best KNN    → F1:  20.0% (manhattan)
+   🌲 Best Tree   → F1:   0.0% (ET)
+   ✅ Ensemble improvement: +8.6%
+
+📋 Confusion Matrix:
+   [[TN=171, FP=  9]
+    [FN=  6, TP=  3]]
+
+[10/11] 
+====================================================================================================
+🎯 Acute stress disorder
+====================================================================================================
+📊 38 positive, 907 negative (ratio 1:23.9)
+🔄 Applying SMOTE... ✓ 726 positive, 726 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✗ Failed
+   Testing manhattan      ... ✗ Failed
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✓ k= 5 | F1=  3.7% | Recall= 12.5%
+
+   🏆 Best KNN metric: cosine (F1=3.7%)
+
+🌲 Training Random Forest... ✓ F1=  0.0% | Recall=  0.0%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: Average @ threshold=0.18
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:   8.2% | Recall:  37.5% | Precision:   4.6% | Bal_Acc:  51.6%
+   🎯 Best KNN    → F1:   3.7% (cosine)
+   🌲 Best Tree   → F1:   0.0% (ET)
+   ✅ Ensemble improvement: +4.5%
+
+📋 Confusion Matrix:
+   [[TN=119, FP= 62]
+    [FN=  5, TP=  3]]
+
+[11/11] 
+====================================================================================================
+🎯 Adjustment disorder
+====================================================================================================
+📊 38 positive, 907 negative (ratio 1:23.9)
+🔄 Applying SMOTE... ✓ 726 positive, 726 negative
+
+🎯 Testing KNN with different distance metrics...
+   Testing euclidean      ... ✓ k= 5 | F1= 15.4% | Recall= 12.5%
+   Testing manhattan      ... ✓ k=15 | F1=  9.5% | Recall= 12.5%
+   Testing chebyshev      ... ✗ Failed
+   Testing minkowski_p3   ... ✗ Failed
+   Testing cosine         ... ✗ Failed
+
+   🏆 Best KNN metric: euclidean (F1=15.4%)
+
+🌲 Training Random Forest... ✓ F1=  0.0% | Recall=  0.0%
+🌳 Training Extra Trees... ✓ F1=  0.0% | Recall=  0.0%
+
+🔗 Creating intelligent ensemble... ✓ Best: BestKNN+BestTree @ threshold=0.42
+
+📊 FINAL RESULTS:
+   🏆 ENSEMBLE    → F1:  18.2% | Recall:  12.5% | Precision:  33.3% | Bal_Acc:  55.7%
+   🎯 Best KNN    → F1:  15.4% (euclidean)
+   🌲 Best Tree   → F1:   0.0% (ET)
+   ✅ Ensemble improvement: +2.8%
+
+📋 Confusion Matrix:
+   [[TN=179, FP=  2]
+    [FN=  7, TP=  1]]
+
+====================================================================================================
+📊 FINAL RESULTS - OPTIMIZED KNN+RF ENSEMBLE
+====================================================================================================
+
+📋 MAIN DISORDERS (sorted by F1-Score):
+--------------------------------------------------------------------------------------------------------------
+Disorder                                    Samples       F1   Recall     Prec  Bal_Acc Strategy       
+--------------------------------------------------------------------------------------------------------------
+Mood disorder                                   266    45.6%    98.1%    29.7%    53.8% F1-Weighted    
+Addictive disorder                              186    39.2%    83.8%    25.6%    62.3% Average        
+Trauma and stress related disorder              128    36.4%    30.8%    44.4%    62.3% Top3           
+Obsessive compulsive disorder                    46    28.6%    33.3%    25.0%    64.2% BestKNN+BestTree
+Schizophrenia                                   117    24.0%    65.2%    14.7%    56.4% F1-Weighted    
+
+📋 SPECIFIC DISORDERS (sorted by F1-Score):
+--------------------------------------------------------------------------------------------------------------
+Disorder                                    Samples       F1   Recall     Prec  Bal_Acc Strategy       
+--------------------------------------------------------------------------------------------------------------
+Depressive disorder                             199    41.0%    80.0%    27.6%    61.8% Average        
+Behavioral addiction disorder                    93    30.8%    42.1%    24.2%    63.7% F1-Weighted    
+Alcohol use disorder                             93    28.6%    31.6%    26.1%    60.8% BestKNN+BestTree
+Obsessive compulsitve disorder                   46    28.6%    33.3%    25.0%    64.2% BestKNN+BestTree
+Schizophrenia                                   117    24.0%    65.2%    14.7%    56.4% F1-Weighted    
+Bipolar disorder                                 67    21.6%    30.8%    16.7%    59.7% BestKNN+BestTree
+Adjustment disorder                              38    18.2%    12.5%    33.3%    55.7% BestKNN+BestTree
+Posttraumatic stress disorder                    52    10.8%    20.0%     7.4%    53.0% F1-Weighted    
+Social anxiety disorder                          48     9.5%    20.0%     6.2%    51.6% Average        
+Acute stress disorder                            38     8.2%    37.5%     4.6%    51.6% Average        
+
+====================================================================================================
+📊 PERFORMANCE ANALYSIS
+====================================================================================================
+
+🏆 OPTIMIZED ENSEMBLE PERFORMANCE:
+   F1-Score:       34.8%
+   Recall:         62.2%
+   Precision:      27.9%
+   Balanced Acc:   59.8%
+
+🏆 BEST PERFORMING DISORDER:
+   Mood disorder
+   F1: 45.6% | Recall: 98.1% | Precision: 29.7%
+   Strategy: F1-Weighted
+   Best KNN metric: manhattan
+
+✅ DISORDERS WITH HIGH RECALL (≥85%):
+   1/5 disorders achieving medical-grade recall
+   • Mood disorder                      : 98.1% recall, 45.6% F1
+
+📊 PERFORMANCE TIERS:
+   Excellent (F1 ≥ 60%):  0
+   Good (50-60%):         0
+   Acceptable (40-50%):   2
+   Total:                 15
+
+🎯 BEST KNN DISTANCE METRICS:
+   manhattan: 2 disorders
+   cosine: 2 disorders
+   euclidean: 1 disorders
+
+🔗 ENSEMBLE STRATEGIES USED:
+   F1-Weighted: 2 disorders
+   Average: 1 disorders
+   Top3: 1 disorders
+   BestKNN+BestTree: 1 disorders
+
+====================================================================================================
+🎓 KEY INSIGHTS
+====================================================================================================
+
+💡 WHY THIS APPROACH WORKS:
+   ✓ Multiple KNN distance metrics capture different patterns
+   ✓ Random Forest provides non-linear decision boundaries
+   ✓ Extra Trees adds diversity through more randomization
+   ✓ Intelligent ensemble picks best strategy per disorder
+   ✓ Threshold optimization maximizes F1-Score
+   ✓ SMOTE handles class imbalance
+
+🎯 CLINICAL APPLICABILITY:
+   ⚠️  NEEDS IMPROVEMENT: 62.2% recall may miss patients
+   ⚠️  34.8% F1-Score indicates room for improvement
+
+====================================================================================================
+✅ TRAINING COMPLETE!
+====================================================================================================
+
+🎯 Summary:
+   • Trained 15 disorder models
+   • Average F1-Score: 34.8%
+   • Average Recall: 62.2%
+   • Tested 5 KNN distance metrics per disorder
+   • Used 2 tree ensemble methods (RF + ET)
+   • Applied 5 ensemble strategies
+
+💪 Models ready for clinical validation and deployment!
+ 

@@ -1,0 +1,307 @@
+{
+  "package_info": {
+    "created_date": "2026-01-10T14:07:49.445925",
+    "total_models": 17,
+    "python_version": "3.8+",
+    "required_packages": [
+      "scikit-learn>=1.0.0",
+      "numpy>=1.21.0",
+      "pandas>=1.3.0",
+      "joblib>=1.1.0",
+      "fastapi>=0.95.0",
+      "uvicorn>=0.21.0",
+      "pydantic>=1.10.0"
+    ]
+  },
+  "models": [
+    {
+      "disorder": "Mood disorder",
+      "safe_name": "Mood_disorder",
+      "files": {
+        "knn_model": "Mood_disorder_knn.pkl",
+        "rf_model": "Mood_disorder_rf.pkl",
+        "et_model": "Mood_disorder_et.pkl",
+        "scaler": "Mood_disorder_scaler.pkl",
+        "metadata": "Mood_disorder_metadata.json",
+        "feature_importance": "Mood_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.4845360824742268,
+        "recall": 0.8867924528301887,
+        "precision": 0.3333333333333333
+      }
+    },
+    {
+      "disorder": "Addictive disorder",
+      "safe_name": "Addictive_disorder",
+      "files": {
+        "knn_model": "Addictive_disorder_knn.pkl",
+        "rf_model": "Addictive_disorder_rf.pkl",
+        "et_model": "Addictive_disorder_et.pkl",
+        "scaler": "Addictive_disorder_scaler.pkl",
+        "metadata": "Addictive_disorder_metadata.json",
+        "feature_importance": "Addictive_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.4074074074074074,
+        "recall": 0.5945945945945946,
+        "precision": 0.30985915492957744
+      }
+    },
+    {
+      "disorder": "Trauma and stress related disorder",
+      "safe_name": "Trauma_and_stress_related_disorder",
+      "files": {
+        "knn_model": "Trauma_and_stress_related_disorder_knn.pkl",
+        "rf_model": "Trauma_and_stress_related_disorder_rf.pkl",
+        "et_model": "Trauma_and_stress_related_disorder_et.pkl",
+        "scaler": "Trauma_and_stress_related_disorder_scaler.pkl",
+        "metadata": "Trauma_and_stress_related_disorder_metadata.json",
+        "feature_importance": "Trauma_and_stress_related_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.272108843537415,
+        "recall": 0.7692307692307693,
+        "precision": 0.1652892561983471
+      }
+    },
+    {
+      "disorder": "Schizophrenia",
+      "safe_name": "Schizophrenia",
+      "files": {
+        "knn_model": "Schizophrenia_knn.pkl",
+        "rf_model": "Schizophrenia_rf.pkl",
+        "et_model": "Schizophrenia_et.pkl",
+        "scaler": "Schizophrenia_scaler.pkl",
+        "metadata": "Schizophrenia_metadata.json",
+        "feature_importance": "Schizophrenia_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.21839080459770116,
+        "recall": 0.8260869565217391,
+        "precision": 0.12582781456953643
+      }
+    },
+    {
+      "disorder": "Anxiety disorder",
+      "safe_name": "Anxiety_disorder",
+      "files": {
+        "knn_model": "Anxiety_disorder_knn.pkl",
+        "rf_model": "Anxiety_disorder_rf.pkl",
+        "et_model": "Anxiety_disorder_et.pkl",
+        "scaler": "Anxiety_disorder_scaler.pkl",
+        "metadata": "Anxiety_disorder_metadata.json",
+        "feature_importance": "Anxiety_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.21176470588235294,
+        "recall": 0.8571428571428571,
+        "precision": 0.12080536912751678
+      }
+    },
+    {
+      "disorder": "Obsessive compulsive disorder",
+      "safe_name": "Obsessive_compulsive_disorder",
+      "files": {
+        "knn_model": "Obsessive_compulsive_disorder_knn.pkl",
+        "rf_model": "Obsessive_compulsive_disorder_rf.pkl",
+        "et_model": "Obsessive_compulsive_disorder_et.pkl",
+        "scaler": "Obsessive_compulsive_disorder_scaler.pkl",
+        "metadata": "Obsessive_compulsive_disorder_metadata.json",
+        "feature_importance": "Obsessive_compulsive_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.13559322033898305,
+        "recall": 0.4444444444444444,
+        "precision": 0.08
+      }
+    },
+    {
+      "disorder": "Depressive disorder",
+      "safe_name": "Depressive_disorder",
+      "files": {
+        "knn_model": "Depressive_disorder_knn.pkl",
+        "rf_model": "Depressive_disorder_rf.pkl",
+        "et_model": "Depressive_disorder_et.pkl",
+        "scaler": "Depressive_disorder_scaler.pkl",
+        "metadata": "Depressive_disorder_metadata.json",
+        "feature_importance": "Depressive_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.36538461538461536,
+        "recall": 0.95,
+        "precision": 0.2261904761904762
+      }
+    },
+    {
+      "disorder": "Schizophrenia",
+      "safe_name": "Schizophrenia",
+      "files": {
+        "knn_model": "Schizophrenia_knn.pkl",
+        "rf_model": "Schizophrenia_rf.pkl",
+        "et_model": "Schizophrenia_et.pkl",
+        "scaler": "Schizophrenia_scaler.pkl",
+        "metadata": "Schizophrenia_metadata.json",
+        "feature_importance": "Schizophrenia_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.21839080459770116,
+        "recall": 0.8260869565217391,
+        "precision": 0.12582781456953643
+      }
+    },
+    {
+      "disorder": "Alcohol use disorder",
+      "safe_name": "Alcohol_use_disorder",
+      "files": {
+        "knn_model": "Alcohol_use_disorder_knn.pkl",
+        "rf_model": "Alcohol_use_disorder_rf.pkl",
+        "et_model": "Alcohol_use_disorder_et.pkl",
+        "scaler": "Alcohol_use_disorder_scaler.pkl",
+        "metadata": "Alcohol_use_disorder_metadata.json",
+        "feature_importance": "Alcohol_use_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.21428571428571427,
+        "recall": 0.15789473684210525,
+        "precision": 0.3333333333333333
+      }
+    },
+    {
+      "disorder": "Behavioral addiction disorder",
+      "safe_name": "Behavioral_addiction_disorder",
+      "files": {
+        "knn_model": "Behavioral_addiction_disorder_knn.pkl",
+        "rf_model": "Behavioral_addiction_disorder_rf.pkl",
+        "et_model": "Behavioral_addiction_disorder_et.pkl",
+        "scaler": "Behavioral_addiction_disorder_scaler.pkl",
+        "metadata": "Behavioral_addiction_disorder_metadata.json",
+        "feature_importance": "Behavioral_addiction_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.4,
+        "recall": 0.3684210526315789,
+        "precision": 0.4375
+      }
+    },
+    {
+      "disorder": "Bipolar disorder",
+      "safe_name": "Bipolar_disorder",
+      "files": {
+        "knn_model": "Bipolar_disorder_knn.pkl",
+        "rf_model": "Bipolar_disorder_rf.pkl",
+        "et_model": "Bipolar_disorder_et.pkl",
+        "scaler": "Bipolar_disorder_scaler.pkl",
+        "metadata": "Bipolar_disorder_metadata.json",
+        "feature_importance": "Bipolar_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.16774193548387098,
+        "recall": 1.0,
+        "precision": 0.09154929577464789
+      }
+    },
+    {
+      "disorder": "Panic disorder",
+      "safe_name": "Panic_disorder",
+      "files": {
+        "knn_model": "Panic_disorder_knn.pkl",
+        "rf_model": "Panic_disorder_rf.pkl",
+        "et_model": "Panic_disorder_et.pkl",
+        "scaler": "Panic_disorder_scaler.pkl",
+        "metadata": "Panic_disorder_metadata.json",
+        "feature_importance": "Panic_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.19047619047619047,
+        "recall": 0.16666666666666666,
+        "precision": 0.2222222222222222
+      }
+    },
+    {
+      "disorder": "Posttraumatic stress disorder",
+      "safe_name": "Posttraumatic_stress_disorder",
+      "files": {
+        "knn_model": "Posttraumatic_stress_disorder_knn.pkl",
+        "rf_model": "Posttraumatic_stress_disorder_rf.pkl",
+        "et_model": "Posttraumatic_stress_disorder_et.pkl",
+        "scaler": "Posttraumatic_stress_disorder_scaler.pkl",
+        "metadata": "Posttraumatic_stress_disorder_metadata.json",
+        "feature_importance": "Posttraumatic_stress_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.10344827586206896,
+        "recall": 0.6,
+        "precision": 0.05660377358490566
+      }
+    },
+    {
+      "disorder": "Social anxiety disorder",
+      "safe_name": "Social_anxiety_disorder",
+      "files": {
+        "knn_model": "Social_anxiety_disorder_knn.pkl",
+        "rf_model": "Social_anxiety_disorder_rf.pkl",
+        "et_model": "Social_anxiety_disorder_et.pkl",
+        "scaler": "Social_anxiety_disorder_scaler.pkl",
+        "metadata": "Social_anxiety_disorder_metadata.json",
+        "feature_importance": "Social_anxiety_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.11320754716981132,
+        "recall": 0.6,
+        "precision": 0.0625
+      }
+    },
+    {
+      "disorder": "Obsessive compulsitve disorder",
+      "safe_name": "Obsessive_compulsitve_disorder",
+      "files": {
+        "knn_model": "Obsessive_compulsitve_disorder_knn.pkl",
+        "rf_model": "Obsessive_compulsitve_disorder_rf.pkl",
+        "et_model": "Obsessive_compulsitve_disorder_et.pkl",
+        "scaler": "Obsessive_compulsitve_disorder_scaler.pkl",
+        "metadata": "Obsessive_compulsitve_disorder_metadata.json",
+        "feature_importance": "Obsessive_compulsitve_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.13559322033898305,
+        "recall": 0.4444444444444444,
+        "precision": 0.08
+      }
+    },
+    {
+      "disorder": "Acute stress disorder",
+      "safe_name": "Acute_stress_disorder",
+      "files": {
+        "knn_model": "Acute_stress_disorder_knn.pkl",
+        "rf_model": "Acute_stress_disorder_rf.pkl",
+        "et_model": "Acute_stress_disorder_et.pkl",
+        "scaler": "Acute_stress_disorder_scaler.pkl",
+        "metadata": "Acute_stress_disorder_metadata.json",
+        "feature_importance": "Acute_stress_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.11538461538461539,
+        "recall": 0.375,
+        "precision": 0.06818181818181818
+      }
+    },
+    {
+      "disorder": "Adjustment disorder",
+      "safe_name": "Adjustment_disorder",
+      "files": {
+        "knn_model": "Adjustment_disorder_knn.pkl",
+        "rf_model": "Adjustment_disorder_rf.pkl",
+        "et_model": "Adjustment_disorder_et.pkl",
+        "scaler": "Adjustment_disorder_scaler.pkl",
+        "metadata": "Adjustment_disorder_metadata.json",
+        "feature_importance": "Adjustment_disorder_feature_importance.json"
+      },
+      "performance": {
+        "f1_score": 0.09210526315789473,
+        "recall": 0.875,
+        "precision": 0.04861111111111111
+      }
+    }
+  ]
+}
